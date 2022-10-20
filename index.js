@@ -24,7 +24,13 @@ const PORT = process.env.PORT || 5000
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/', router)
+app.use('/api/v1/', router)
+app.get('/', function (req, res) {
+  res.send({
+      message: 'Hello World'
+  });
+});
+
 app.use('/uploads', express.static('uploads'))
 
 server.listen(port, () => console.log(`Listening on port ${port}!`))
